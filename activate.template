@@ -28,7 +28,7 @@ Parameters:
 
 Conditions:
   NoBoundary: !Equals [ !Ref PermissionsBoundaryArn, "none" ]
-  PublicTypeArnOverride: !Not [ !Equals [ !Ref PermissionsBoundaryArn, "none" ] ]
+  PublicTypeArnOverride: !Not [ !Equals [ !Ref PublicTypeArn, "none" ] ]
   CreateExecRole: !Equals [ !Ref ExecutionRoleArn, "none" ]
   CreateLoggingRole: !Equals [ !Ref LoggingRoleArn, "none" ]
 
