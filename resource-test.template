@@ -1,0 +1,32 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description:
+  Simple template to test ConfluentCloud::IAM::ServiceAccount resource
+
+Parameters:
+  ConfluentCloudApiSecrets:
+    Type: String
+    Description: Name or full ARN of the ConfluentCloudApiSecrets that contains the ApiKey and ApiSecret
+
+  ServiceAccountName:
+    Type: String
+    Description: Name of the service account to create
+    AllowedPattern: "^[a-zA-Z0-9-_.]+$"
+
+  ServiceAccountDescription:
+    Type: String
+    Description: Description of the service account
+    Default: "None"
+
+Resources:
+  ConfluentServiceAccount:
+    Type: ConfluentCloud::IAM::ServiceAccount
+    Properties:
+        Description: !Ref ServiceAccountDescription
+        Name: !Ref ServiceAccountName
+        ConfluentCloudCredentials:
+          ApiKey: !Sub "{{resolve:secretsmanager:${ConfluentCloudApiSecrets}:SecretString:ApiKey}}"
+          ApiSecret: !Sub "{{resolve:secretsmanager:${ConfluentCloudApiSecrets}:SecretString:ApiSecret}}"
+
+Outputs:
+  ServiceAccountId:
+    Value: !Ref ConfluentServiceAccount

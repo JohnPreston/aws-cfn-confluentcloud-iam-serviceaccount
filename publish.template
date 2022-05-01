@@ -1,0 +1,59 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Registers and sets a new default resource version, and publishes the resource to the public registry.
+Parameters:
+  SchemaPackageURL:
+    Description: URL to S3::Bucket that contains the resource project package
+    Type: String
+
+  TestingLogBucket:
+    Type: String
+
+  ExecutionRoleArn:
+    Type: String
+
+  LogRoleArn:
+    Type: String
+
+  PubliclyPublish:
+    Type: String
+    AllowedValues:
+      - "yes"
+      - "no"
+    Default: "no"
+
+  TypeName:
+    Type: String
+    Default: ConfluentCloud::IAM::ServiceAccount
+    AllowedValues:
+      - ConfluentCloud::IAM::ServiceAccount
+
+Conditions:
+  PublishPubliclyCon: !Equals [ !Ref PubliclyPublish, "yes" ]
+
+Resources:
+  PrivateResourceVersion:
+    Type: AWS::CloudFormation::ResourceVersion
+    Properties:
+      SchemaHandlerPackage: !Ref SchemaPackageURL
+      TypeName: !Ref TypeName
+      ExecutionRoleArn: !Ref ExecutionRoleArn
+      LoggingConfig:
+        LogRoleArn: !Ref LogRoleArn
+        LogGroupName: cfn/types/resource/private/confluentcloud-iam-serviceaccount
+
+  ResourceDefaultVersion:
+    Type: AWS::CloudFormation::ResourceDefaultVersion
+    DependsOn:
+      - PrivateResourceVersion
+    Properties:
+      TypeVersionArn: !Ref PrivateResourceVersion
+
+  PublishedResource:
+    Type: AWS::CloudFormation::PublicTypeVersion
+    DependsOn:
+      - PrivateResourceVersion
+    Condition: PublishPubliclyCon
+    Properties:
+      Type: RESOURCE
+      TypeName: !Ref TypeName
+      LogDeliveryBucket: !Ref TestingLogBucket

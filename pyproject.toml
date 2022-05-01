@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "confluentcloud-iam-serviceaccount"
+version = "0.0.1"
+description = "AWS CFN Resource to provision a Confluent Cloud Service account"
+authors = ["John Preston <john@ews-network.net>"]
+license = "LICENSE"
+readme = "README.md"
+keywords = ["aws", "cloudformation", "kafka", "confluent"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Intended Audience :: System Administrators",
+  "Intended Audience :: Information Technology",
+  "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
+  "Natural Language :: English",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+cloudformation-cli-python-lib = "^2.1.11"
+compose-x-common = "^0.4.2"
+confluent-cloud-sdk = "^0.1.0"
+
+[tool.poetry.dev-dependencies]
+black = "^22.1.0"
+isort = "^5.10.1"
+pre-commit = "^2.17.0"
+cloudformation-cli = "^0.2.23"
+cloudformation-cli-python-plugin = "^2.1.5"
+pyclean = "^2.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
