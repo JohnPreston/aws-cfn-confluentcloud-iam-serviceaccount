@@ -1,4 +1,4 @@
-# Confluent::IAMv2::ServiceAccount
+# ConfluentCloud::IAM::ServiceAccount
 
 Allows to create a new Service Account into an organization in Confluent Cloud via API.
 

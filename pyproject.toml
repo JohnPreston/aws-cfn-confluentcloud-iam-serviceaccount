@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "confluentcloud-iam-serviceaccount"
-version = "0.0.1"
+version = "1.0.0"
 description = "AWS CFN Resource to provision a Confluent Cloud Service account"
 authors = ["John Preston <john@ews-network.net>"]
 license = "LICENSE"
