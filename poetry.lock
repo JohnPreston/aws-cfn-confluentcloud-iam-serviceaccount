@@ -135,7 +135,7 @@ python-versions = ">=3.6.1"
 name = "cfn-flip"
 version = "1.3.0"
 description = "Convert AWS CloudFormation templates between JSON and YAML formats"
-category = "dev"
+category = "main"
 optional = false
 python-versions = "*"
 
@@ -177,7 +177,7 @@ unicode_backport = ["unicodedata2"]
 name = "click"
 version = "8.1.2"
 description = "Composable command line interface toolkit"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 
@@ -240,7 +240,7 @@ types-dataclasses = ">=0.1.5"
 name = "colorama"
 version = "0.4.4"
 description = "Cross-platform colored terminal text."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
@@ -384,7 +384,7 @@ python-versions = ">=3.5"
 name = "importlib-metadata"
 version = "4.11.3"
 description = "Read metadata from Python packages"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 
@@ -768,7 +768,7 @@ python-versions = "*"
 name = "pyyaml"
 version = "5.4.1"
 description = "YAML parser and emitter for Python"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
 
@@ -849,6 +849,21 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "troposphere"
+version = "4.0.1"
+description = "AWS CloudFormation creation library"
+category = "main"
+optional = false
+python-versions = ">=3.7.0"
+
+[package.dependencies]
+cfn-flip = ">=1.0.2"
+typing-extensions = {version = ">=3.7.4.3", markers = "python_version < \"3.8\""}
+
+[package.extras]
+policy = ["awacs (>=2.0.0)"]
+
+[[package]]
 name = "typed-ast"
 version = "1.5.3"
 description = "a fork of Python 2 and 3 ast modules with type comment support"
@@ -868,7 +883,7 @@ python-versions = "*"
 name = "typing-extensions"
 version = "4.2.0"
 description = "Backported and Experimental Type Hints for Python 3.7+"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 
@@ -940,7 +955,7 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 name = "zipp"
 version = "3.8.0"
 description = "Backport of pathlib-compatible object wrapper for zip files"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 
@@ -951,7 +966,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "a9c208199f9df6eaf251af1ad37bdd3709a27a13544ec0fda08832329d3f6bd9"
+content-hash = "17793762e0eabc770f7763159cc0559294912d58d5268370e858a3f0e5909206"
 
 [metadata.files]
 atomicwrites = [
@@ -1441,6 +1456,10 @@ toml = [
 tomli = [
     {file = "tomli-2.0.1-py3-none-any.whl", hash = "sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc"},
     {file = "tomli-2.0.1.tar.gz", hash = "sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"},
+]
+troposphere = [
+    {file = "troposphere-4.0.1-py3-none-any.whl", hash = "sha256:c5542ce63af3bd2c757973a351a1cf745120fd93c83783b239f1b401c586db52"},
+    {file = "troposphere-4.0.1.tar.gz", hash = "sha256:719e9387524762c559218776a6e1240f5cfbf725261d520ba6c1cd0dcc37786a"},
 ]
 typed-ast = [
     {file = "typed_ast-1.5.3-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:9ad3b48cf2b487be140072fb86feff36801487d4abb7382bb1929aaac80638ea"},
