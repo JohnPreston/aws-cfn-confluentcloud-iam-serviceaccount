@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "confluentcloud-iam-serviceaccount"
-version = "1.0.0"
+version = "1.0.0post0"
 description = "AWS CFN Resource to provision a Confluent Cloud Service account"
 authors = ["John Preston <john@ews-network.net>"]
 license = "LICENSE"
@@ -54,7 +54,7 @@ known_first_party = "kelvin"
 github_url = "https://github.com/compose-x/ecs_composex"
 
 [tool.tbump.version]
-current = "1.0.0"
+current = "1.0.0post0"
 
 regex = '''
   (?P<major>\d+)
@@ -78,5 +78,5 @@ cmd = "make conform"
 
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core>=1.0.0post0"]
 build-backend = "poetry.core.masonry.api"
