@@ -37,6 +37,7 @@ pre-commit = "^2.17.0"
 cloudformation-cli = "^0.2.23"
 cloudformation-cli-python-plugin = "^2.1.5"
 pyclean = "^2.0.0"
+tbump = "^6.8.0"
 
 [tool.black]
 line-length = 88
@@ -48,6 +49,33 @@ include_trailing_comma = true
 force_grid_wrap = 0
 use_parentheses = true
 known_first_party = "kelvin"
+
+[tool.tbump]
+github_url = "https://github.com/compose-x/ecs_composex"
+
+[tool.tbump.version]
+current = "1.0.0"
+
+regex = '''
+  (?P<major>\d+)
+  \.
+  (?P<minor>\d+)
+  \.
+  (?P<patch>\d+)
+  (?:(?P<rc>[\S]+))?
+  '''
+
+[tool.tbump.git]
+message_template = "Bump to {new_version}"
+tag_template = "v{new_version}"
+
+[[tool.tbump.file]]
+src = "pyproject.toml"
+
+[[tool.tbump.before_commit]]
+name = "Files format"
+cmd = "make conform"
+
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
